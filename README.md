@@ -35,10 +35,12 @@
 <p align="center">
     <a href="#features">Özellikler</a> •
     <a href="#how-to-run">Nasıl Çalışır ?</a> •
-    <a href="#qna">Q & A</a>
+    <a href="#learning">Kazanımlarım</a>
 </div>
 
 </p>
+
+<div id="features"></div>
 
 ## Projedeki Özellikler
 
@@ -61,7 +63,7 @@
 - Modifier
 - Event
 
-  
+<div id="how-to-run"></div>
 
 ## Hazırlık
 
@@ -303,6 +305,8 @@ Kontratın düzgün çalışıp çalışmadığını kontrol etmek için başka 
 
 
 <hr>
+
+<div id="learning"></div>
 
 ## Kazanımlarım
 
