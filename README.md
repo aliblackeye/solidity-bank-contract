@@ -69,7 +69,7 @@
 
 Kontratımızı yazmak için birkaç hazırlığa ihtiyacımız var.
 
-```sol 
+```js 
   //SPDX-License-Identifier: MIT
   pragma solidity ^0.8.0;
 
@@ -86,7 +86,7 @@ Counters kontratı bize artırılabilen, azaltılabilen veya sıfırlanabilen bi
 
 ## Başlayalım
 
-```sol 
+```js 
   contract Bank {
 
     using Counters for Counters.Counter;
@@ -109,7 +109,7 @@ uint ya da uint256 tipindeki değişkenler ile sadece pozitif sayıları tutmak 
 
 ## Event (Olay Tetikçisi)
 
-```sol 
+```js 
   event Withdraw(address creator, uint256 amount);
   event Deposit(address creator, uint256 amount);
   event Transfer(address sender, address to, uint256 amount);
@@ -127,7 +127,7 @@ Daha detaylı takip sağlamak için daha fazla event oluşturabilirsiniz.
 
 ## Tanımlamalar
 
-```sol
+```js
   address payable owner;
   address[] private userAccounts;
   mapping(address => User) private users;
@@ -143,7 +143,7 @@ Yapısı itibariyle sözlüğe benzeyen mapping ile hangi adresin hangi kullanı
 
 ## Constructor (Yapıcı)
 
-```sol
+```js
   constructor() {
       owner = payable(msg.sender);
       idToUser.increment();
@@ -163,7 +163,7 @@ ID'leri 0'dan değil, 1 den başlayacak şekilde tutmak istediğim için önce 1
 
 ## Bazı Gereksinimler
 
-```sol
+```js
   modifier isOwner() {
       require(owner == msg.sender, "You are not owner!");
       _;
@@ -187,7 +187,7 @@ insufficientBalance ile bakiyenin yetersiz olduğu durumları kontrol ederiz.
 
 ## Yeni Kullanıcı Oluşturmak
 
-```sol
+```js
   function createNewUser(address _address) external {
       require(
           users[_address].ID == 0,
@@ -209,7 +209,7 @@ Biliyoruz ki tanımladığımız User struct'ındaki ID'yi uint olarak tanımlad
 
 ## Kullanıcı Sayısı
 
-```sol
+```js
   function totalUsers() external view returns (uint256) {
       return userAccounts.length;
   }
@@ -223,7 +223,7 @@ Biliyoruz ki tanımladığımız User struct'ındaki ID'yi uint olarak tanımlad
 
 ## Para Yatırma
 
-```sol
+```js
   function deposit() external payable isOwner {
       users[msg.sender].balance += msg.value;
       emit Deposit(msg.sender, msg.value);
@@ -236,7 +236,7 @@ isOwner modifier'ı ile önce sahiplik kontrolü yapıyoruz. Şartlar sağlanır
 
 ## Para Çekme
 
-```sol
+```js
   function withdraw(uint256 _amount)
       external
       isOwner
@@ -255,7 +255,7 @@ isOwner modifier'ı ile önce sahiplik kontrolü yapıyoruz. Şartlar sağlanır
 <hr>
 
 ## Para Transferi
-```sol
+```js
   function sendMoney(address _address, uint256 _amount)
       external
       isOwner
@@ -280,7 +280,7 @@ Para transferi yapmak için yine sahiplik ve miktar kontrolü yapıktan sonra ek
 
 ## Bakiye Görüntüleme
 
-```sol
+```js
   function getBalance() external view returns (uint256) {
       return users[msg.sender].balance;
   }
@@ -291,7 +291,7 @@ Bakiyemizde ne kadar bulunduğunu görüntülemek için getBalance fonksiyonu ç
 <hr>
 
 ## Bir Kullanıcının Bilgisi
-```sol
+```js
   function getUser(address _address)
       external
       view
